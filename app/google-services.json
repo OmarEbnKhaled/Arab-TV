@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "99772790098",
+    "project_id": "arab-tv-75351",
+    "storage_bucket": "arab-tv-75351.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99772790098:android:9c5d15bc1ad830bd86b68b",
+        "android_client_info": {
+          "package_name": "com.omar.arabtv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99772790098-o18ff4k8t5j2nk9vns161g8hjed3fd2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAbnOKQVPXUd_L4IGpQBg06GNVH65JZkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99772790098-o18ff4k8t5j2nk9vns161g8hjed3fd2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
