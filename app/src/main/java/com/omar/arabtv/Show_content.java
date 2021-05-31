@@ -7,11 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -20,7 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
 
-public class Show_content extends AppCompatActivity {
+public class Show_content extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
@@ -42,24 +40,8 @@ public class Show_content extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        navigationView.setNavigationItemSelectedListener(this);
 
-                switch (item.getItemId()){
-                    case R.id.nav_home:
-                        startActivity(new Intent(Show_content.this,MediaPlayer.class));
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-
-                    case R.id.nav_gallery:
-                        startActivity(new Intent(Show_content.this,MainActivity.class));
-                        break;
-
-                }
-                return true;
-            }
-        });*/
 
     }
 
@@ -67,4 +49,13 @@ public class Show_content extends AppCompatActivity {
         startActivity(new Intent(this, MediaPlayer.class));
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+
+        if (item.getItemId() == R.id.nav_home){
+            startActivity(new Intent(Show_content.this,MainActivity.class));
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
