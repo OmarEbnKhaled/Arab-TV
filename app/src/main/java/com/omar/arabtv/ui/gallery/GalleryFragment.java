@@ -72,7 +72,7 @@ public class GalleryFragment extends Fragment {
                         VideoModel videoModel = document.toObject(VideoModel.class);
                         list.add(videoModel);
                         setRecyclerViewVertical();
-                        //Log.d("DataOB", "onComplete: "+document.toString());
+                        Log.d("DataOB", "onComplete: "+document.toString());
                     }
                 }else {
                     Log.d("DataOB", "onComplete: ERROR");
