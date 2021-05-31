@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -42,7 +43,6 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
-
     }
 
     public void show_video(View view) {
@@ -52,10 +52,25 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
 
-        if (item.getItemId() == R.id.nav_home){
-            startActivity(new Intent(Show_content.this,MainActivity.class));
+        Intent intent = new Intent(Show_content.this,MainActivity.class);
+
+        switch(item.getItemId()){
+
+            case R.id.nav_home:
+                intent.putExtra("layout",R.id.nav_home);
+                break;
+
+            case R.id.nav_gallery:
+                intent.putExtra("layout",R.id.nav_gallery);
+                break;
+
+            case R.id.nav_slideshow:
+                intent.putExtra("layout",R.id.nav_slideshow);
+                break;
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+
+        startActivity(intent);
+        finish();
         return true;
     }
 }

@@ -6,6 +6,7 @@ import android.view.Menu;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    //private Navigation navigation;
+    private int layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
+
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -37,9 +40,31 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
+
+        //Set fragment Layout in mainActivity
+        Bundle extras;
+        if (savedInstanceState == null) {
+            extras = getIntent().getExtras();
+            if(extras == null) {
+                layout= R.id.nav_home;
+            } else {
+                layout = extras.getInt("layout");
+            }
+        } else {
+            layout = R.id.nav_home;
+        }
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavGraph navGraph = navController.getNavInflater().inflate(R.navigation.mobile_navigation);
+        navGraph.setStartDestination(layout);
+        navController.setGraph(navGraph);
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+    }
+
+    private void setLayout() {
 
     }
 
