@@ -35,8 +35,8 @@ public class GalleryFragment extends Fragment implements RecyclerAdapterVertical
     private GalleryViewModel galleryViewModel;
     private FragmentGalleryBinding binding;
     private RecyclerView recyclerView;
-    private FirebaseFirestore dp;
-    private List<VideoModel> list;
+    public FirebaseFirestore dp;
+    public List<VideoModel> list;
     private ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,7 +57,7 @@ public class GalleryFragment extends Fragment implements RecyclerAdapterVertical
         return root;
     }
 
-    private void getData(){
+    public List<VideoModel> getData(){
         list = new ArrayList<>();
 
         dp.collection("مسلسلات رمضان 2021").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -75,6 +75,8 @@ public class GalleryFragment extends Fragment implements RecyclerAdapterVertical
                 }
             }
         });
+
+        return list;
     }
 
     private void setRecyclerViewVertical() {

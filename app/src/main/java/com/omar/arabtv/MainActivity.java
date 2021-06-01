@@ -1,11 +1,20 @@
 package com.omar.arabtv;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.Menu;
+import android.view.View;
+import android.view.WindowInsets;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
@@ -14,13 +23,29 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.omar.arabtv.databinding.ActivityMainBinding;
+import com.omar.arabtv.ui.gallery.GalleryFragment;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private int layout;
+    private SliderView sliderView;
+    public FirebaseFirestore dp;
+    public List<VideoModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbarMainActivity);
+        setSupportActionBar(binding.appBarMain.toolbar);
+
+        dp = FirebaseFirestore.getInstance();
+        getData();
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -61,6 +89,37 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+
+    private void setSlider() {
+        sliderView = (SliderView)findViewById(R.id.slider);
+
+        SliderAdapter sliderAdapter = new SliderAdapter(this,list);
+        sliderView.setSliderAdapter(sliderAdapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        sliderView.startAutoCycle();
+
+    }
+
+    public void getData(){
+        list = new ArrayList<>();
+
+        dp.collection("مسلسلات رمضان 2021").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document : task.getResult()){
+                        VideoModel videoModel = document.toObject(VideoModel.class);
+                        list.add(videoModel);
+                        //Log.d("DataOB", "onComplete: "+document.toString());
+                    }
+                    setSlider();
+                }else {
+                    Log.d("DataOB", "onComplete: ERROR");
+                }
+            }
+        });
     }
 
     private void setLayout() {
