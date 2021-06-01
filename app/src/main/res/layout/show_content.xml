@@ -30,7 +30,7 @@
                     android:fitsSystemWindows="true"
                     app:contentScrim="@color/red"
                     app:expandedTitleMarginStart="10dp"
-                    app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed|snap">
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                     <RelativeLayout
                         android:layout_width="match_parent"

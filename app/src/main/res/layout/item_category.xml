@@ -4,24 +4,12 @@
     android:layout_height="wrap_content"
     android:background="@color/trans"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    >
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="15dp"
-        android:layout_margin="10dp"
-        android:elevation="5dp">
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_card">
+    android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:background="@color/trans">
 
@@ -37,8 +25,8 @@
                         android:layout_height="wrap_content"
                         android:text="مسلسلات عربي"
                         android:layout_gravity="start"
-                        android:padding="8dp"
-                        android:textSize="19sp"
+                        android:padding="10dp"
+                        android:textSize="20sp"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"/>
@@ -48,7 +36,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="المزيد"
-                        android:padding="8dp"
+                        android:padding="10dp"
                         android:layout_gravity="end"
                         android:textSize="18sp"
                         android:textColor="@color/red"
@@ -57,24 +45,25 @@
 
                 </LinearLayout>
 
+                <View android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_margin="5dp" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     android:id="@+id/recycle_horizontal"
                     android:background="@color/trans"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginEnd="5dp" />
 
             </LinearLayout>
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    </androidx.cardview.widget.CardView>
-
     <View android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:background="@color/gray"
-        android:layout_margin="10dp"/>
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>
