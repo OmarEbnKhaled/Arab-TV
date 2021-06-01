@@ -36,7 +36,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.holder> {
 
     @Override
     public int getCount() {
-        return 5;
+        return 7;
     }
 
     public class holder extends SliderViewAdapter.ViewHolder {

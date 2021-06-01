@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbar);
+        setSupportActionBar(binding.appBarMain.toolbarMainActivity);
 
         dp = FirebaseFirestore.getInstance();
         getData();
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        binding.appBarMain.toolbarMainActivity.setTitle("");
     }
 
     private void setSlider() {
