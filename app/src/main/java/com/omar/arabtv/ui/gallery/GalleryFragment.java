@@ -1,5 +1,6 @@
 package com.omar.arabtv.ui.gallery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.omar.arabtv.MainActivity;
 import com.omar.arabtv.RecyclerAdapterVertical;
+import com.omar.arabtv.Show_content;
 import com.omar.arabtv.VideoModel;
 import com.omar.arabtv.databinding.FragmentGalleryBinding;
 
@@ -27,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends Fragment implements RecyclerAdapterVertical.onItemListener {
 
     private GalleryViewModel galleryViewModel;
     private FragmentGalleryBinding binding;
@@ -51,13 +54,6 @@ public class GalleryFragment extends Fragment {
 
         getData();
 
-        /*final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
         return root;
     }
 
@@ -83,7 +79,7 @@ public class GalleryFragment extends Fragment {
 
     private void setRecyclerViewVertical() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-        RecyclerAdapterVertical recyclerAdapterVertical = new RecyclerAdapterVertical(getContext(),list);
+        RecyclerAdapterVertical recyclerAdapterVertical = new RecyclerAdapterVertical(getContext(),list, this);
         recyclerView.setAdapter(recyclerAdapterVertical);
         progressBar.setVisibility(View.GONE);
     }
@@ -92,5 +88,14 @@ public class GalleryFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(getActivity(), Show_content.class);
+        intent.putExtra("imageURL",list.get(position).getImageURL());
+        intent.putExtra("trailerURL",list.get(position).getTrailerURL());
+        intent.putExtra("title",list.get(position).getTitle());
+        startActivity(intent);
     }
 }

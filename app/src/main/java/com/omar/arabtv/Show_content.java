@@ -12,8 +12,10 @@ import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,14 +26,26 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
+    private String imageURL, trailerURL, title;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_content);
 
+        Bundle extras;
+        if (savedInstanceState == null) {
+            extras = getIntent().getExtras();
+            imageURL = extras.getString("imageURL");
+            trailerURL = extras.getString("trailerURL");
+            title = extras.getString("title");
+        } else {
+            finish();
+        }
+
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar_show_content);
-        toolbar.setTitle("القاهرة كابول");
+        toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
         navigationView = (NavigationView)findViewById(R.id.nav_view_content);
@@ -43,10 +57,15 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        imageView = (ImageView)findViewById(R.id.poster);
+        Glide.with(this).load(imageURL).into(imageView);
+
     }
 
     public void show_video(View view) {
-        startActivity(new Intent(this, MediaPlayer.class));
+        Intent intent = new Intent(this, MediaPlayer.class);
+        intent.putExtra("videoURl",trailerURL);
+        startActivity(intent);
     }
 
     @Override

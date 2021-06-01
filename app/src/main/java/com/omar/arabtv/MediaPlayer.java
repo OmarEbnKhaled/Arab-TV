@@ -50,11 +50,20 @@ public class MediaPlayer extends AppCompatActivity {
     private SimpleExoPlayer simpleExoPlayer;
     private boolean flag_play = false;
     private int control_progress;
+    private static String videoURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.media_player);
+
+        Bundle extrasMedia;
+        if (savedInstanceState == null) {
+            extrasMedia = getIntent().getExtras();
+            videoURL = extrasMedia.getString("videoURl");
+        } else {
+            finish();
+        }
 
         playerView = findViewById(R.id.player_view);
         progressBar = findViewById(R.id.progress_bar);
@@ -65,10 +74,8 @@ public class MediaPlayer extends AppCompatActivity {
         setupMediaPlayer();
     }
 
-
-
     private void setupMediaPlayer() {
-        final String myUrlStr = "https://firebasestorage.googleapis.com/v0/b/arab-tv-75351.appspot.com/o/%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9%20%D9%83%D8%A7%D8%A8%D9%88%D9%84%202.mp4?alt=media&token=c162d487-ddb0-487c-8ca9-60f0ecab4b13";
+        final String myUrlStr = videoURL;
         URL url;
         Uri uri = null;
         try {

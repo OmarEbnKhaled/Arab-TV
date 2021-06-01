@@ -19,19 +19,21 @@ import java.util.List;
 
 public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapterVertical.ViewHolder> {
 
-    Context context;
-    List<VideoModel> list;
+    private Context context;
+    private List<VideoModel> list;
+    private onItemListener onItemListener;
 
-    public RecyclerAdapterVertical(Context context, List<VideoModel> list) {
+    public RecyclerAdapterVertical(Context context, List<VideoModel> list, onItemListener onItemListener) {
         this.context = context;
         this.list = list;
+        this.onItemListener = onItemListener;
     }
 
     @NonNull
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview_vertical, parent, false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview_vertical, parent, false),onItemListener);
     }
 
     @Override
@@ -46,15 +48,29 @@ public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapte
         return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView title;
+        onItemListener onItemListener;
 
-        public ViewHolder(@NonNull @NotNull View itemView) {
+        public ViewHolder(@NonNull @NotNull View itemView, onItemListener onItemListener) {
             super(itemView);
             title = itemView.findViewById(R.id.title_v);
             imageView = itemView.findViewById(R.id.card_image_v);
+
+            this.onItemListener = onItemListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onItemListener.onItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface onItemListener{
+        void onItemClick(int position);
     }
 }
