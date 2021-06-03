@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="230dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="15dp"
+    android:elevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:background="@drawable/background_card">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/image_grid"
+                android:scaleType="fitXY"
+                android:src="@drawable/omar" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play"/>
+
+            <TextView
+                android:id="@+id/title_grid"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="نسل الأغراب"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/background_title"
+                android:paddingTop="10dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_gravity="bottom"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

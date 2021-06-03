@@ -39,7 +39,6 @@ public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Glide.with(context).load(list.get(position).getImageURL()).into(holder.imageView);
-        //Log.d("DataOB", "onComplete: "+list.get(position).getImageURL().toString());
         holder.title.setText(list.get(position).getTitle());
     }
 
