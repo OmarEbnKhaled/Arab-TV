@@ -11,5 +11,7 @@
     <color name="trans">#00FF0000</color>
     <color name="gray">#66666666</color>
     <color name="transGray">#80000000</color>
+    <color name="offWhite">#f8f8ff</color>
+    <color name="yellow">#ffff00</color>
 
 </resources>
