@@ -2,15 +2,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_weight="25"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -35,20 +33,22 @@
      <View
          android:layout_width="match_parent"
          android:layout_height="1dp"
-         android:layout_margin="5dp"
+         android:layout_marginStart="10dp"
+         android:layout_marginEnd="10dp"
          android:background="@color/gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="15"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="5">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -73,8 +73,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -99,8 +101,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -125,8 +129,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -151,8 +157,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -182,5 +190,11 @@
          android:layout_height="1dp"
          android:layout_marginTop="10dp"
          android:background="@color/gray"/>
+
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/recycle_content_dis"
+         android:layout_width="match_parent"
+         android:layout_margin="10dp"
+         android:layout_height="wrap_content"/>
 
     </LinearLayout>
