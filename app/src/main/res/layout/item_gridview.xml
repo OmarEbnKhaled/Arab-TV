@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
-    android:layout_height="230dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="20dp"
     app:cardCornerRadius="15dp"
@@ -21,7 +21,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="150dp"
                 android:id="@+id/image_grid"
                 android:scaleType="fitXY"
                 android:src="@drawable/omar" />
@@ -36,13 +36,13 @@
             <TextView
                 android:id="@+id/title_grid"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:text="نسل الأغراب"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:background="@drawable/background_title"
                 android:paddingTop="10dp"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-smallcaps"
                 android:layout_gravity="bottom"/>

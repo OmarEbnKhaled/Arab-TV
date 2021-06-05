@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapterVertical.ViewHolder> {
+public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapterVertical.ViewHolder>{
 
     private Context context;
     private List<VideoModel> list;

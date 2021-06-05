@@ -1,5 +1,6 @@
 package com.omar.arabtv.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +24,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.omar.arabtv.Category.CategoryAdapter;
 import com.omar.arabtv.Category.CategoryModel;
+import com.omar.arabtv.GridView_More;
 import com.omar.arabtv.R;
+import com.omar.arabtv.RecyclerAdapterHorizontal;
+import com.omar.arabtv.Show_content;
 import com.omar.arabtv.VideoModel;
 import com.omar.arabtv.databinding.FragmentHomeBinding;
 
@@ -32,7 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements CategoryAdapter.onMoreListener, RecyclerAdapterHorizontal.onItemListener {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
@@ -82,8 +86,8 @@ public class HomeFragment extends Fragment {
 
     private void setRecycleView() {
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(),getCategory());
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+            CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), getCategory(), this,this);
         recyclerView.setAdapter(categoryAdapter);
         progressBar.setVisibility(View.GONE);
 
@@ -105,5 +109,19 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onMoreClick(int position) {
+        startActivity(new Intent(getActivity(), GridView_More.class));
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(getActivity(), Show_content.class);
+        intent.putExtra("imageURL",list.get(position).getImageURL());
+        intent.putExtra("trailerURL",list.get(position).getTrailerURL());
+        intent.putExtra("title",list.get(position).getTitle());
+        startActivity(intent);
     }
 }

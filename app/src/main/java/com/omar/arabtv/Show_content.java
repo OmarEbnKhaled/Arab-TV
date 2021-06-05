@@ -37,9 +37,12 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
         Bundle extras;
         if (savedInstanceState == null) {
             extras = getIntent().getExtras();
-            imageURL = extras.getString("imageURL");
-            trailerURL = extras.getString("trailerURL");
-            title = extras.getString("title");
+            if(extras != null) {
+                imageURL = extras.getString("imageURL");
+                trailerURL = extras.getString("trailerURL");
+                title = extras.getString("title");
+            }else
+                finish();
         } else {
             finish();
         }
@@ -92,4 +95,5 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
         finish();
         return true;
     }
+
 }
