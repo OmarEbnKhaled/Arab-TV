@@ -1,6 +1,7 @@
 package com.omar.arabtv;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class GridAdapter extends BaseAdapter {
+public class GridAdapter extends BaseAdapter  {
 
     private Context context;
     private List<VideoModel> list;
@@ -55,6 +56,16 @@ public class GridAdapter extends BaseAdapter {
         Glide.with(context).load(list.get(position).getImageURL()).into(imageView);
         textView.setText(list.get(position).getTitle());
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Show_content.class);
+                intent.putExtra("imageURL",list.get(position).getImageURL());
+                intent.putExtra("trailerURL",list.get(position).getTrailerURL());
+                intent.putExtra("title",list.get(position).getTitle());
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 }
