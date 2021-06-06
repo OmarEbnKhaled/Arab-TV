@@ -1,6 +1,7 @@
 package com.omar.arabtv;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,16 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.holder> {
     public void onBindViewHolder(holder viewHolder, int position) {
 
         Glide.with(context).load(list.get(position).getImageURL()).into(viewHolder.imageView);
+        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Show_content.class);
+                intent.putExtra("imageURL",list.get(position).getImageURL());
+                intent.putExtra("trailerURL",list.get(position).getTrailerURL());
+                intent.putExtra("title",list.get(position).getTitle());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -49,5 +60,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.holder> {
             imageView = itemView.findViewById(R.id.image_slider);
 
         }
+
     }
+
 }
