@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:theme="@style/Theme.ArabTV.NoActionBar"
-    tools:context=".Show_content"
+    tools:context=".ui.Activities.ShowContentActivity"
     tools:openDrawer="start">
 
 

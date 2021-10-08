@@ -9,6 +9,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:orientation="horizontal">
 
             <TextView
@@ -31,12 +32,12 @@
 
         </LinearLayout>
 
-     <View
+     <!--<View
          android:layout_width="match_parent"
          android:layout_height="1dp"
          android:layout_marginStart="10dp"
          android:layout_marginEnd="10dp"
-         android:background="@color/gray"/>
+         android:background="@color/gray"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,8 +49,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -76,8 +79,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -104,8 +109,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -132,10 +139,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:weightSum="5"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -157,11 +167,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:weightSum="5"
                 android:orientation="vertical">
 
@@ -174,6 +187,7 @@
                     android:padding="5dp" />
 
                 <TextView
+                    android:id="@+id/rating_show"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="تقييم"
@@ -189,7 +203,6 @@
      <View
          android:layout_width="match_parent"
          android:layout_height="1dp"
-         android:layout_marginTop="10dp"
          android:background="@color/gray"/>
 
      <androidx.recyclerview.widget.RecyclerView

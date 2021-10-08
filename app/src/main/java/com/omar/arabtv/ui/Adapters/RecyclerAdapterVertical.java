@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,18 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.omar.arabtv.R;
+import com.omar.arabtv.ui.Models.VideoModel;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RecyclerAdapterContentList extends RecyclerView.Adapter<RecyclerAdapterContentList.ViewHolder> {
+public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapterVertical.ViewHolder>{
 
     private Context context;
     private List<VideoModel> list;
     private onItemListener onItemListener;
 
-    public RecyclerAdapterContentList(Context context, List<VideoModel> list, onItemListener onItemListener) {
+    public RecyclerAdapterVertical(Context context, List<VideoModel> list, onItemListener onItemListener) {
         this.context = context;
         this.list = list;
         this.onItemListener = onItemListener;
@@ -32,7 +34,7 @@ public class RecyclerAdapterContentList extends RecyclerView.Adapter<RecyclerAda
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_content_list, parent, false),onItemListener);
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview_vertical, parent, false),onItemListener);
     }
 
     @Override
@@ -54,8 +56,8 @@ public class RecyclerAdapterContentList extends RecyclerView.Adapter<RecyclerAda
 
         public ViewHolder(@NonNull @NotNull View itemView, onItemListener onItemListener) {
             super(itemView);
-            title = itemView.findViewById(R.id.title_content_list);
-            imageView = itemView.findViewById(R.id.image_content_list);
+            title = itemView.findViewById(R.id.title_v);
+            imageView = itemView.findViewById(R.id.card_image_v);
 
             this.onItemListener = onItemListener;
 

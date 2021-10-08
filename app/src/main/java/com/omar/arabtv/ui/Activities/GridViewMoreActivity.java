@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +12,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.omar.arabtv.ui.Models.VideoModel;
 import com.omar.arabtv.databinding.ActivityGridViewMoreBinding;
-import com.omar.arabtv.databinding.ActivityMainBinding;
+import com.omar.arabtv.ui.Adapters.GridAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridView_More extends AppCompatActivity {
+public class GridViewMoreActivity extends AppCompatActivity {
 
     private ActivityGridViewMoreBinding binding;
     private FirebaseFirestore dp;
@@ -61,7 +62,7 @@ public class GridView_More extends AppCompatActivity {
     }
 
     private void setGridView() {
-        GridAdapter gridAdapter = new GridAdapter(GridView_More.this,list);
+        GridAdapter gridAdapter = new GridAdapter(GridViewMoreActivity.this,list);
         binding.gridView.setAdapter(gridAdapter);
     }
 }

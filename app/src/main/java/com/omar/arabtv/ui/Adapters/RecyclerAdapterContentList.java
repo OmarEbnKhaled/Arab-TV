@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,18 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.omar.arabtv.R;
+import com.omar.arabtv.ui.Models.VideoModel;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RecyclerAdapterHorizontal extends RecyclerView.Adapter<RecyclerAdapterHorizontal.ViewHolder> {
+public class RecyclerAdapterContentList extends RecyclerView.Adapter<RecyclerAdapterContentList.ViewHolder> {
 
     private Context context;
     private List<VideoModel> list;
     private onItemListener onItemListener;
 
-    public RecyclerAdapterHorizontal(Context context, List<VideoModel> list, onItemListener onItemListener) {
+    public RecyclerAdapterContentList(Context context, List<VideoModel> list, onItemListener onItemListener) {
         this.context = context;
         this.list = list;
         this.onItemListener = onItemListener;
@@ -32,13 +34,12 @@ public class RecyclerAdapterHorizontal extends RecyclerView.Adapter<RecyclerAdap
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview_horizantal, parent, false), onItemListener);
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_content_list, parent, false),onItemListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Glide.with(context).load(list.get(position).getImageURL()).into(holder.imageView);
-        //Log.d("DataOB", "onComplete: "+list.get(position).getImageURL().toString());
         holder.title.setText(list.get(position).getTitle());
     }
 
@@ -53,10 +54,11 @@ public class RecyclerAdapterHorizontal extends RecyclerView.Adapter<RecyclerAdap
         TextView title;
         onItemListener onItemListener;
 
-        public ViewHolder(@NonNull @NotNull View itemView , onItemListener onItemListener) {
+        public ViewHolder(@NonNull @NotNull View itemView, onItemListener onItemListener) {
             super(itemView);
-            title = itemView.findViewById(R.id.title_h);
-            imageView = itemView.findViewById(R.id.card_image_h);
+            title = itemView.findViewById(R.id.title_content_list);
+            imageView = itemView.findViewById(R.id.image_content_list);
+
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

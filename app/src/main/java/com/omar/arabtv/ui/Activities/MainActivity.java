@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.omar.arabtv.R;
+import com.omar.arabtv.ui.Adapters.SliderAdapter;
+import com.omar.arabtv.ui.Models.VideoModel;
 import com.omar.arabtv.databinding.ActivityMainBinding;
-import com.omar.arabtv.ui.gallery.GalleryFragment;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 

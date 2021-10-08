@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.omar.arabtv.R;
+import com.omar.arabtv.ui.Activities.ShowContentActivity;
+import com.omar.arabtv.ui.Models.VideoModel;
 
 import java.util.List;
 
@@ -59,7 +62,7 @@ public class GridAdapter extends BaseAdapter  {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Show_content.class);
+                Intent intent = new Intent(context, ShowContentActivity.class);
                 intent.putExtra("imageURL",list.get(position).getImageURL());
                 intent.putExtra("trailerURL",list.get(position).getTrailerURL());
                 intent.putExtra("title",list.get(position).getTitle());

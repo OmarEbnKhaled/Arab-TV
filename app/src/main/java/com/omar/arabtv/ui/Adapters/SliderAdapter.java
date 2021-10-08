@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.omar.arabtv.R;
+import com.omar.arabtv.ui.Activities.ShowContentActivity;
+import com.omar.arabtv.ui.Models.VideoModel;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.List;
@@ -35,7 +37,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.holder> {
         viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Show_content.class);
+                Intent intent = new Intent(context, ShowContentActivity.class);
                 intent.putExtra("imageURL",list.get(position).getImageURL());
                 intent.putExtra("trailerURL",list.get(position).getTrailerURL());
                 intent.putExtra("title",list.get(position).getTitle());

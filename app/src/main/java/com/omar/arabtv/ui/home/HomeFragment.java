@@ -7,12 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,11 +21,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.omar.arabtv.Category.CategoryAdapter;
 import com.omar.arabtv.Category.CategoryModel;
-import com.omar.arabtv.GridView_More;
-import com.omar.arabtv.R;
-import com.omar.arabtv.RecyclerAdapterHorizontal;
-import com.omar.arabtv.Show_content;
-import com.omar.arabtv.VideoModel;
+import com.omar.arabtv.ui.Activities.GridViewMoreActivity;
+import com.omar.arabtv.ui.Adapters.RecyclerAdapterHorizontal;
+import com.omar.arabtv.ui.Activities.ShowContentActivity;
+import com.omar.arabtv.ui.Models.VideoModel;
 import com.omar.arabtv.databinding.FragmentHomeBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -113,12 +109,12 @@ public class HomeFragment extends Fragment implements CategoryAdapter.onMoreList
 
     @Override
     public void onMoreClick(int position) {
-        startActivity(new Intent(getActivity(), GridView_More.class));
+        startActivity(new Intent(getActivity(), GridViewMoreActivity.class));
     }
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(getActivity(), Show_content.class);
+        Intent intent = new Intent(getActivity(), ShowContentActivity.class);
         intent.putExtra("imageURL",list.get(position).getImageURL());
         intent.putExtra("trailerURL",list.get(position).getTrailerURL());
         intent.putExtra("title",list.get(position).getTitle());

@@ -1,4 +1,4 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +34,7 @@ import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultAllocator;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.omar.arabtv.R;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -42,7 +43,7 @@ import java.net.URL;
 import static com.google.android.exoplayer2.DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS;
 import static com.google.android.exoplayer2.DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS;
 
-public class MediaPlayer extends AppCompatActivity {
+public class MediaPlayerActivity extends AppCompatActivity {
 
     private PlayerView playerView;
     private ProgressBar progressBar;
@@ -55,7 +56,7 @@ public class MediaPlayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.media_player);
+        setContentView(R.layout.activity_media_player);
 
         Bundle extrasMedia;
         if (savedInstanceState == null) {

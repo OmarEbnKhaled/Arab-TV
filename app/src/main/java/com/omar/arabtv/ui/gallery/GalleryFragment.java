@@ -19,10 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.omar.arabtv.MainActivity;
-import com.omar.arabtv.RecyclerAdapterVertical;
-import com.omar.arabtv.Show_content;
-import com.omar.arabtv.VideoModel;
+import com.omar.arabtv.ui.Adapters.RecyclerAdapterVertical;
+import com.omar.arabtv.ui.Activities.ShowContentActivity;
+import com.omar.arabtv.ui.Models.VideoModel;
 import com.omar.arabtv.databinding.FragmentGalleryBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -94,7 +93,7 @@ public class GalleryFragment extends Fragment implements RecyclerAdapterVertical
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(getActivity(), Show_content.class);
+        Intent intent = new Intent(getActivity(), ShowContentActivity.class);
         intent.putExtra("imageURL",list.get(position).getImageURL());
         intent.putExtra("trailerURL",list.get(position).getTrailerURL());
         intent.putExtra("title",list.get(position).getTitle());

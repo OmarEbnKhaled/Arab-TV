@@ -1,7 +1,6 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.omar.arabtv.R;
+import com.omar.arabtv.ui.Models.VideoModel;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapterVertical.ViewHolder>{
+public class RecyclerAdapterHorizontal extends RecyclerView.Adapter<RecyclerAdapterHorizontal.ViewHolder> {
 
     private Context context;
     private List<VideoModel> list;
     private onItemListener onItemListener;
 
-    public RecyclerAdapterVertical(Context context, List<VideoModel> list, onItemListener onItemListener) {
+    public RecyclerAdapterHorizontal(Context context, List<VideoModel> list, onItemListener onItemListener) {
         this.context = context;
         this.list = list;
         this.onItemListener = onItemListener;
@@ -33,12 +34,13 @@ public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapte
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview_vertical, parent, false),onItemListener);
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview_horizantal, parent, false), onItemListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Glide.with(context).load(list.get(position).getImageURL()).into(holder.imageView);
+        //Log.d("DataOB", "onComplete: "+list.get(position).getImageURL().toString());
         holder.title.setText(list.get(position).getTitle());
     }
 
@@ -53,11 +55,10 @@ public class RecyclerAdapterVertical extends RecyclerView.Adapter<RecyclerAdapte
         TextView title;
         onItemListener onItemListener;
 
-        public ViewHolder(@NonNull @NotNull View itemView, onItemListener onItemListener) {
+        public ViewHolder(@NonNull @NotNull View itemView , onItemListener onItemListener) {
             super(itemView);
-            title = itemView.findViewById(R.id.title_v);
-            imageView = itemView.findViewById(R.id.card_image_v);
-
+            title = itemView.findViewById(R.id.title_h);
+            imageView = itemView.findViewById(R.id.card_image_h);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

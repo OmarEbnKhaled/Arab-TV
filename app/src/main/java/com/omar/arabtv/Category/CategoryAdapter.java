@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.omar.arabtv.R;
-import com.omar.arabtv.RecyclerAdapterHorizontal;
-import com.omar.arabtv.VideoModel;
+import com.omar.arabtv.ui.Adapters.RecyclerAdapterHorizontal;
 
 import org.jetbrains.annotations.NotNull;
 

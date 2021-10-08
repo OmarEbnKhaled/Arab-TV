@@ -1,6 +1,6 @@
 package com.omar.arabtv.Category;
 
-import com.omar.arabtv.VideoModel;
+import com.omar.arabtv.ui.Models.VideoModel;
 
 import java.util.List;
 

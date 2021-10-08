@@ -1,27 +1,34 @@
-package com.omar.arabtv;
+package com.omar.arabtv.ui.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
+import com.omar.arabtv.R;
 
 import org.jetbrains.annotations.NotNull;
 
 
-public class Show_content extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ShowContentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
@@ -32,7 +39,7 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_content);
+        setContentView(R.layout.activity_show_content);
 
         Bundle extras;
         if (savedInstanceState == null) {
@@ -63,18 +70,48 @@ public class Show_content extends AppCompatActivity implements NavigationView.On
         imageView = (ImageView)findViewById(R.id.poster);
         Glide.with(this).load(imageURL).into(imageView);
 
+        LinearLayout rating = findViewById(R.id.rating);
+        rating.setOnClickListener(v -> Rating());
+
+    }
+
+    private void Rating() {
+        Dialog ratingDialog = new Dialog(ShowContentActivity.this);
+        ratingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ratingDialog.setContentView(R.layout.dialog_rating);
+        ratingDialog.show();
+
+        RatingBar ratingBar = ratingDialog.findViewById(R.id.ratingBar);
+        TextView liveRating = ratingDialog.findViewById(R.id.liveRating);
+        MaterialButton btn_submit = ratingDialog.findViewById(R.id.btn_submitRating);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                liveRating.setText(String.format("%s",rating));
+            }
+        });
+
+        btn_submit.setOnClickListener(v -> {
+            String sRating = String.valueOf(ratingBar.getRating());
+            TextView ratingShow = findViewById(R.id.rating_show);
+            ratingShow.setText(sRating);
+
+            ratingDialog.dismiss();
+        });
     }
 
     public void show_video(View view) {
-        Intent intent = new Intent(this, MediaPlayer.class);
+        Intent intent = new Intent(this, MediaPlayerActivity.class);
         intent.putExtra("videoURl",trailerURL);
         startActivity(intent);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
 
-        Intent intent = new Intent(Show_content.this,MainActivity.class);
+        Intent intent = new Intent(ShowContentActivity.this, MainActivity.class);
 
         switch(item.getItemId()){
 
