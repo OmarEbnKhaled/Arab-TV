@@ -35,6 +35,8 @@ public class ShowContentActivity extends AppCompatActivity implements Navigation
     private DrawerLayout drawerLayout;
     private String imageURL, trailerURL, title;
     private ImageView imageView;
+    private boolean likeStatus = false;
+    private boolean dislikeStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class ShowContentActivity extends AppCompatActivity implements Navigation
                 imageURL = extras.getString("imageURL");
                 trailerURL = extras.getString("trailerURL");
                 title = extras.getString("title");
+                TextView contentTitle = findViewById(R.id.content_title);
+                contentTitle.setText(title);
             }else
                 finish();
         } else {
@@ -70,9 +74,42 @@ public class ShowContentActivity extends AppCompatActivity implements Navigation
         imageView = (ImageView)findViewById(R.id.poster);
         Glide.with(this).load(imageURL).into(imageView);
 
-        LinearLayout rating = findViewById(R.id.rating);
+        LinearLayout rating = findViewById(R.id.btn_rating);
         rating.setOnClickListener(v -> Rating());
 
+        LinearLayout like = findViewById(R.id.btn_like);
+        like.setOnClickListener(v -> Like());
+
+        LinearLayout dislike = findViewById(R.id.btn_dislike);
+        dislike.setOnClickListener(v -> disLike());
+
+    }
+
+    private void disLike() {
+        ImageView image = findViewById(R.id.dislike_image);
+
+        if (dislikeStatus){
+            image.setImageResource(R.drawable.ic_dislike_outline);
+            dislikeStatus = false;
+        }else {
+            image.setImageResource(R.drawable.ic_dislike_fill);
+            dislikeStatus = true;
+            likeStatus = true;
+            Like();
+        }
+    }
+
+    private void Like() {
+        ImageView image = findViewById(R.id.like_image);
+        if (likeStatus){
+            image.setImageResource(R.drawable.ic_like_outline);
+            likeStatus = false;
+        }else {
+            image.setImageResource(R.drawable.ic_like_fill);
+            likeStatus = true;
+            dislikeStatus = true;
+            disLike();
+        }
     }
 
     private void Rating() {

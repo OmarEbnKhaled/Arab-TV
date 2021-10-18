@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_comment.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_dislike_fill.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_like.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_like_fill.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_menu_camera.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_pause.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_share.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/ic_star.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/drawable/outline_thumb_up_24.xml" value="0.24177631578947367" />
+        <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/layout/activity_media_player.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/layout/cardview_horizantal.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/layout/cardview_vertical.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/omara/AndroidStudioProjects/ArabTV/app/src/main/res/layout/content_description.xml" value="0.23157894736842105" />
